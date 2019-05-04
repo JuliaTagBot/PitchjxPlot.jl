@@ -23,7 +23,7 @@ Generate line graph of pitch-by-pitch velocity.
 
 - `Plots` object.
 
-## Usage
+## Usages
 
 - per player / isbypitch = false
   - `veloline_by_pitch("2018-10-20", firstname="Clayton", lastname="Kershaw")`
