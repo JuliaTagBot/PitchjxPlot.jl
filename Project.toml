@@ -1,0 +1,19 @@
+name = "PitchjxPlot"
+uuid = "e3500516-8d93-576f-be1d-d2a86d2ba2af"
+authors = ["prs-watch <prs-watch@yahoo.co.jp>"]
+version = "0.0.1"
+
+[deps]
+Pitchjx = "aacb0929-27c6-5080-af7c-e887e16e4e49"
+Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
+
+[compat]
+julia = ">= 0.7"
+Pitchjx = ">= 0.0.3"
+Plots = "0.24.0"
