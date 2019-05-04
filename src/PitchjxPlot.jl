@@ -1,7 +1,7 @@
 module PitchjxPlot
 
 export
-    veloline_by_pitch
+    veloplot_by_pitch
 
 using Pitchjx
 using Plots
@@ -34,7 +34,7 @@ Generate line graph of pitch-by-pitch velocity.
 - per team / isbypitch = false
   - `veloline_by_pitch("2018-10-20", teamname="LAD", isbypitchtype=true)`
 """
-function veloline_by_pitch(start; fin=start, per="player", firstname=nothing, lastname=nothing, teamname=nothing, isbypitchtype=false)
+function veloplot_by_pitch(start; fin=start, per="player", firstname=nothing, lastname=nothing, teamname=nothing, isbypitchtype=false)
     # parameter check
     if per == "player"
         if firstname == nothing && lastname == nothing
@@ -51,28 +51,26 @@ function veloline_by_pitch(start; fin=start, per="player", firstname=nothing, la
     data = pitchjx(start, fin)
     # execute
     if per == "player"
-        return veloline_by_pitch_by_player(data, start, fin, firstname, lastname, isbypitchtype)
+        return veloplot_by_pitch_by_player(data, start, fin, firstname, lastname, isbypitchtype)
     else
-        return veloline_by_pitch_by_team(data, start, fin, teamname, isbypitchtype)
+        return veloplot_by_pitch_by_team(data, start, fin, teamname, isbypitchtype)
     end
 end
 
-function veloline_by_pitch_by_player(data, start, fin, firstname, lastname, isbypitchtype)
+function veloplot_by_pitch_by_player(data, start, fin, firstname, lastname, isbypitchtype)
     target = data[(data.pitcher_firstname .== firstname) .& (data.pitcher_lastname .== lastname), :]
     # convert velocity to Float64
     target[:startspeed] = parse.(Float64, target[:startspeed])
-    target[:endspeed] = parse.(Float64, target[:endspeed])
     # init
     p = plot(title="$start to $fin: $firstname $lastname", xlabel="Number of Pitches", ylabel="miles per hour")
     plotpitch(target, isbypitchtype)
     return p
 end
 
-function veloline_by_pitch_by_team(data, start, fin, teamname, isbypitchtype)
+function veloplot_by_pitch_by_team(data, start, fin, teamname, isbypitchtype)
     target = data[data.pitcher_teamname .== teamname, :]
     # convert velocity to Float64
     target[:startspeed] = parse.(Float64, target[:startspeed])
-    target[:endspeed] = parse.(Float64, target[:endspeed])
     # init
     p = plot(title="$start to $fin: $teamname", xlabel="Number of Pitches", ylabel="MPH")
     plotpitch(target, isbypitchtype)
@@ -84,12 +82,10 @@ function plotpitch(target, isbypitchtype)
         pitchtypes = unique(target.pitchtype)
         for pitchtype in pitchtypes
             pitches = target[target.pitchtype .== pitchtype, :]
-            plot!(pitches.startspeed, marker=:circle, label="$pitchtype: Start Speed")
-            plot!(pitches.endspeed, marker=:circle, label="$pitchtype: End Speed")
+            plot!(pitches.startspeed, seriestype=:scatter, marker=:circle, label="$pitchtype: Start Speed")
         end
     else
         plot!(target.startspeed, marker=:circle, label="Start Speed")
-        plot!(target.endspeed, marker=:circle, label="End Speed")
     end
 end
 

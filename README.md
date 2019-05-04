@@ -1,6 +1,6 @@
 ![pitchjxplot](./pitchjxplot.png)
 
-PITCHf/x plot tools by Julia.
+PITCHf/x plot tools by [Julia](https://julialang.org/).
 
 ## Install
 
@@ -26,10 +26,10 @@ julia -e 'using Pkg; Pkg.add("https://github.com/prs-watch/PitchjxPlot.jl")'
 ```julia
 using PitchjxPlot
 
-player = veloline_by_pitch("2018-10-20", firstname="Clayton", lastname="Kershaw")
-player_by_pitchtype = veloline_by_pitch("2018-10-20", firstname="Clayton", lastname="Kershaw", isbypitchtype=true)
-team = veloline_by_pitch("2018-10-20", teamname="LAD")
-team_by_pitchtype = veloline_by_pitch("2018-10-20", teamname="LAD", isbypitchtype=true)
+player = veloplot_by_pitch("2018-10-20", firstname="Clayton", lastname="Kershaw")
+player_by_pitchtype = veloplot_by_pitch("2018-10-20", firstname="Clayton", lastname="Kershaw", isbypitchtype=true)
+team = veloplot_by_pitch("2018-10-20", teamname="LAD")
+team_by_pitchtype = veloplot_by_pitch("2018-10-20", teamname="LAD", isbypitchtype=true)
 ```
 
 ### pitch-by-pitch location heatmap
