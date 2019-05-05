@@ -7,13 +7,10 @@ version = "0.0.1"
 Pitchjx = "aacb0929-27c6-5080-af7c-e887e16e4e49"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 
+[compat]
+Pitchjx = ">= 0.0.4"
+Plots = "0.24.0"
+julia = ">= 0.7"
+
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
-
-[targets]
-test = ["Test"]
-
-[compat]
-julia = ">= 0.7"
-Pitchjx = ">= 0.0.3"
-Plots = "0.24.0"

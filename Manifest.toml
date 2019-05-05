@@ -242,9 +242,11 @@ version = "1.1.0"
 
 [[Pitchjx]]
 deps = ["DataFrames", "Dates", "EzXML", "HTTP", "ProfileView"]
-git-tree-sha1 = "9c180522ae2219a4ce2be550cf03b21f94e6e2d5"
+git-tree-sha1 = "3b380aa37984e3cf7b28627ab8aa1ec1a73dff39"
+repo-rev = "master"
+repo-url = "https://github.com/prs-watch/Pitchjx.jl"
 uuid = "aacb0929-27c6-5080-af7c-e887e16e4e49"
-version = "0.0.3"
+version = "0.0.4"
 
 [[Pkg]]
 deps = ["Dates", "LibGit2", "Markdown", "Printf", "REPL", "Random", "SHA", "UUIDs"]
@@ -379,9 +381,9 @@ version = "1.0.0"
 
 [[Tables]]
 deps = ["IteratorInterfaceExtensions", "LinearAlgebra", "Requires", "TableTraits", "Test"]
-git-tree-sha1 = "e2abd466ca2f00a1bb8cb80024d59745cc8f91a6"
+git-tree-sha1 = "9e748316f5aa7b7753c90de612ef98fe8b0ea297"
 uuid = "bd369af6-aec1-5ad0-b16a-f7cc5008161c"
-version = "0.2.0"
+version = "0.2.1"
 
 [[Test]]
 deps = ["Distributed", "InteractiveUtils", "Logging", "Random"]
