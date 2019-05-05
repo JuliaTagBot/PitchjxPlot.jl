@@ -10,6 +10,7 @@ Since this package have been not released to [General](https://github.com/JuliaR
 julia -e 'using Pkg; Pkg.add("https://github.com/prs-watch/PitchjxPlot.jl")'
 ```
 
+
 ## Features
 
 `PitchjxPlot` provides some plots of PITCHf/x data.
@@ -17,7 +18,7 @@ julia -e 'using Pkg; Pkg.add("https://github.com/prs-watch/PitchjxPlot.jl")'
 - pitch-by-pitch velocity line (2019-05-05: Implemented!)
   - by player or team
   - You can choose whether separate graph by pitch type or not
-- pitch-by-pitch location heatmap (Coming soon..)
+- pitch-by-pitch location heatmap (2019-05-05: Implemented!)
 
 ## Usages
 
@@ -34,4 +35,11 @@ team_by_pitchtype = veloplot_by_pitch("2018-10-20", teamname="LAD", isbypitchtyp
 
 ### pitch-by-pitch location heatmap
 
-Coming soon..
+```julia
+using PitchjxPlot
+
+player = heatmapplot("2018-10-20", firstname="Clayton", lastname="Kershaw")
+player_by_pitchtype = heatmapplot("2018-10-20", firstname="Clayton", lastname="Kershaw", isbypitchtype=true)
+team = heatmapplot("2018-10-20", teamname="LAD")
+team_by_pitchtype = heatmapplot("2018-10-20", teamname="LAD", isbypitchtype=true)
+```
