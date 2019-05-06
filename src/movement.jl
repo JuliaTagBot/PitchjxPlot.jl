@@ -17,7 +17,7 @@ Generate location heatmap.
 
 ## Usages
 """
-function movementplot(start; fin=start, per="player", firstname=nothing, lastname=nothing, teamname=nothing)
+function movementplot(start, fin=start; per="player", firstname=nothing, lastname=nothing, teamname=nothing)
     # parameter check
     checkparam(per, firstname, lastname, teamname)
     # extract data
@@ -49,7 +49,7 @@ function movementplot_by_team(data, start, fin, teamname)
     target[:pfxx] = parse.(Float64, target[:pfxx])
     target[:pfxz] = parse.(Float64, target[:pfxz])
     p = plot(
-        xlims=(-20,20), ylims=(-20,20), title="$start to $fin: $teamname", 
+        xlims=(-20,20), ylims=(-20,20), title="$start to $fin: $teamname",
         xlabel="Horizon Movement", ylabel="Vertical Movement"
     )
     plotmovement(target)

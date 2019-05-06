@@ -26,7 +26,7 @@ Generate line graph of pitch-by-pitch velocity.
 - per team / isbypitch = false
   - `veloline_by_pitch("2018-10-20", teamname="LAD", isbypitchtype=true)`
 """
-function veloplot_by_pitch(start; fin=start, per="player", firstname=nothing, lastname=nothing, teamname=nothing, isbypitchtype=false)
+function veloplot_by_pitch(start, fin=start; per="player", firstname=nothing, lastname=nothing, teamname=nothing, isbypitchtype=false)
     # parameter check
     checkparam(per, firstname, lastname, teamname)
     # extract data
