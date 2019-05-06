@@ -102,7 +102,7 @@ function vmove_velo_by_player(data, start, fin, firstname, lastname)
     target[:startspeed] = parse.(Float64, target[:startspeed])
     target[:pfxz] = parse.(Float64, target[:pfxz])
     p = plot(
-        xlims=(-20,20), ylims=(-20,20), title="$start to $fin: $firstname $lastname",
+        xlims=(60,100), ylims=(-20,20), title="$start to $fin: $firstname $lastname",
         xlabel="Start Speed", ylabel="Vertical Movement"
     )
     plot_vmove_velo(target)
@@ -115,7 +115,7 @@ function vmove_velo_by_team(data, start, fin, teamname)
     target[:startspeed] = parse.(Float64, target[:startspeed])
     target[:pfxz] = parse.(Float64, target[:pfxz])
     p = plot(
-        xlims=(-20,20), ylims=(-20,20), title="$start to $fin: $teamname",
+        xlims=(60,100), ylims=(-20,20), title="$start to $fin: $teamname",
         xlabel="Start Speed", ylabel="Vertical Movement"
     )
     plot_vmove_velo(target)
