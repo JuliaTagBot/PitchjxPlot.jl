@@ -35,7 +35,10 @@ function movementplot_by_player(data, start, fin, firstname, lastname)
     # convert velocity to Float64
     target[:pfxx] = parse.(Float64, target[:pfxx])
     target[:pfxz] = parse.(Float64, target[:pfxz])
-    p = plot(title="$start to $fin: $firstname $lastname", xlabel="Horizon Movement", ylabel="Vertical Movement")
+    p = plot(
+        xlims=(-20,20), ylims=(-20,20), title="$start to $fin: $firstname $lastname",
+        xlabel="Horizon Movement", ylabel="Vertical Movement"
+    )
     plotmovement(target)
     return p
 end
@@ -45,7 +48,10 @@ function movementplot_by_team(data, start, fin, teamname)
     # convert velocity to Float64
     target[:pfxx] = parse.(Float64, target[:pfxx])
     target[:pfxz] = parse.(Float64, target[:pfxz])
-    p = plot(title="$start to $fin: $teamname", xlabel="Horizon Movement", ylabel="Vertical Movement")
+    p = plot(
+        xlims=(-20,20), ylims=(-20,20), title="$start to $fin: $teamname", 
+        xlabel="Horizon Movement", ylabel="Vertical Movement"
+    )
     plotmovement(target)
     return p
 end
