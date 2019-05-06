@@ -3,7 +3,8 @@ module PitchjxPlot
 export
     veloplot_by_pitch,
     heatmapplot,
-    movementplot
+    movementplot,
+    vmove_velo_plot
 
 using Pitchjx
 using Plots
