@@ -51,7 +51,7 @@ function movementplot_by_team(data, start, fin, teamname)
 end
 
 function plotmovement(target)
-    pitchtypes = names(target.pitchtype)
+    pitchtypes = unique(target.pitchtype)
     for pitchtype in pitchtypes
         pitches = target[target.pitchtype .== pitchtype, :]
         plot!(pitches.pfxx, pitches.pfxz, seriestype=:scatter, marker=:circle, label="$pitchtype")
