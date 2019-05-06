@@ -140,17 +140,27 @@ end
 
 function heatmapplot_by_player(data, start, fin, firstname, lastname, isbypitchtype)
     target = data[(data.pitcher_firstname .== firstname) .& (data.pitcher_lastname .== lastname), :]
-    p = plot(title="$start to $fin: $firstname $lastname", aspect_ratio=1)
+    title = "$start to $fin: $firstname $lastname"
+    return plotheatmap(target, title, isbypitchtype)
+end
+
+function heatmapplot_by_team(data, start, fin, teamname, isbypitchtype)
+    target = data[data.pitcher_teamname .== teamname, :]
+    title = "$start to $fin: $teamname"
+    return plotheatmap(target, title, isbypitchtype)
+end
+
+function plotheatmap(target, title, isbypitchtype)
     if isbypitchtype
         pitchtypes = unique(target.pitchtype)
         p = plot(aspect_ratio=1, layout=(length(pitchtypes), 1))
         for (index, pitchtype) in enumerate(pitchtypes)
             pitches = target[target.pitchtype .== pitchtype, :]
             rarray = createheatmap(pitches)
-            plot!(p[index], title="$start to $fin: $firstname $lastname: $pitchtype", rarray, seriestype=:heatmap)
+            plot!(p[index], title="$title: $pitchtype", rarray, seriestype=:heatmap)
         end
     else
-        p = plot(title="$start to $fin: $firstname $lastname", aspect_ratio=1)
+        p = plot(title="$title", aspect_ratio=1)
         rarray = createheatmap(target)
         plot!(rarray, seriestype=:heatmap)
     end
