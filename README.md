@@ -19,27 +19,44 @@ julia -e 'using Pkg; Pkg.add("https://github.com/prs-watch/PitchjxPlot.jl")'
   - by player or team
   - You can choose whether separate graph by pitch type or not
 - pitch-by-pitch location heatmap (2019-05-05: Implemented!)
+- pitch-by-pitch movement scatter (2019-05-10: Implemented!)
+- pitch-by-pitch velocity-movement scatter (2019-05-10: Implemented!)
 
 ## Usages
 
 ### pitch-by-pitch velocity line
 
 ```julia
+using Pitchjx
 using PitchjxPlot
 
-player = veloplot_by_pitch("2018-10-20", firstname="Clayton", lastname="Kershaw")
-player_by_pitchtype = veloplot_by_pitch("2018-10-20", firstname="Clayton", lastname="Kershaw", isbypitchtype=true)
-team = veloplot_by_pitch("2018-10-20", teamname="LAD")
-team_by_pitchtype = veloplot_by_pitch("2018-10-20", teamname="LAD", isbypitchtype=true)
+data = pitchjx("2018-10-20")
+
+player = veloplot_by_pitch(data, firstname="Clayton", lastname="Kershaw")
+player_by_pitchtype = veloplot_by_pitch(data, firstname="Clayton", lastname="Kershaw", isbypitchtype=true)
+team = veloplot_by_pitch(data, teamname="LAD")
+team_by_pitchtype = veloplot_by_pitch(data, teamname="LAD", isbypitchtype=true)
 ```
 
 ### pitch-by-pitch location heatmap
 
 ```julia
-using PitchjxPlot
+player = heatmapplot(data, firstname="Clayton", lastname="Kershaw")
+player_by_pitchtype = heatmapplot(data, firstname="Clayton", lastname="Kershaw", isbypitchtype=true)
+team = heatmapplot(data, teamname="LAD")
+team_by_pitchtype = heatmapplot(data, teamname="LAD", isbypitchtype=true)
+```
 
-player = heatmapplot("2018-10-20", firstname="Clayton", lastname="Kershaw")
-player_by_pitchtype = heatmapplot("2018-10-20", firstname="Clayton", lastname="Kershaw", isbypitchtype=true)
-team = heatmapplot("2018-10-20", teamname="LAD")
-team_by_pitchtype = heatmapplot("2018-10-20", teamname="LAD", isbypitchtype=true)
+### pitch-by-pitch movement scatter
+
+```julia
+player = movementplot(data, firstname="Clayton", lastname="Kershaw")
+team = movementplot(data, teamname="LAD")
+```
+
+### pitch-by-pitch velocity-movement scatter
+
+```julia
+player = vmove_velo_plot(data, firstname="Clayton", lastname="Kershaw")
+team = vmove_velo_plot(data, teamname="LAD")
 ```
