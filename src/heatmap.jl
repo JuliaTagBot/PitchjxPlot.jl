@@ -28,7 +28,7 @@ Generate location heatmap.
 
 ## Usages
 """
-function heatmapplot(start, fin=start; per="player", firstname=nothing, lastname=nothing, teamname=nothing, isbypitchtype=false)
+function heatmapplot(data; per="player", firstname=nothing, lastname=nothing, teamname=nothing, isbypitchtype=false)
     # parameter check
     checkparam(per, firstname, lastname, teamname)
     # extract data

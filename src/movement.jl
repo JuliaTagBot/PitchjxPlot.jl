@@ -17,11 +17,9 @@ Generate movement scatter.
 
 ## Usages
 """
-function movementplot(start, fin=start; per="player", firstname=nothing, lastname=nothing, teamname=nothing)
+function movementplot(data; per="player", firstname=nothing, lastname=nothing, teamname=nothing)
     # parameter check
     checkparam(per, firstname, lastname, teamname)
-    # extract data
-    data = pitchjx(start, fin)
     # execute
     if per == "player"
         return movementplot_by_player(data, start, fin, firstname, lastname)
@@ -83,7 +81,7 @@ Generate velocity-vertical move scatter.
 
 ## Usages
 """
-function vmove_velo_plot(start, fin=start; per="player", firstname=nothing, lastname=nothing, teamname=nothing)
+function vmove_velo_plot(data; per="player", firstname=nothing, lastname=nothing, teamname=nothing)
     # parameter check
     checkparam(per, firstname, lastname, teamname)
     # extract data
