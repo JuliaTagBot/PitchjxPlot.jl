@@ -31,28 +31,28 @@ function veloplot_by_pitch(data; per="player", firstname=nothing, lastname=nothi
     checkparam(per, firstname, lastname, teamname)
     # execute
     if per == "player"
-        return veloplot_by_pitch_by_player(data, start, fin, firstname, lastname, isbypitchtype)
+        return veloplot_by_pitch_by_player(data, firstname, lastname, isbypitchtype)
     else
-        return veloplot_by_pitch_by_team(data, start, fin, teamname, isbypitchtype)
+        return veloplot_by_pitch_by_team(data, teamname, isbypitchtype)
     end
 end
 
-function veloplot_by_pitch_by_player(data, start, fin, firstname, lastname, isbypitchtype)
+function veloplot_by_pitch_by_player(data, firstname, lastname, isbypitchtype)
     target = data[(data.pitcher_firstname .== firstname) .& (data.pitcher_lastname .== lastname), :]
     # convert velocity to Float64
     target[:startspeed] = parse.(Float64, target[:startspeed])
     # init
-    p = plot(title="$start to $fin: $firstname $lastname", xlabel="Number of Pitches", ylabel="miles per hour")
+    p = plot(title="$firstname $lastname", xlabel="Number of Pitches", ylabel="miles per hour")
     plotvelo(target, isbypitchtype)
     return p
 end
 
-function veloplot_by_pitch_by_team(data, start, fin, teamname, isbypitchtype)
+function veloplot_by_pitch_by_team(data, teamname, isbypitchtype)
     target = data[data.pitcher_teamname .== teamname, :]
     # convert velocity to Float64
     target[:startspeed] = parse.(Float64, target[:startspeed])
     # init
-    p = plot(title="$start to $fin: $teamname", xlabel="Number of Pitches", ylabel="MPH")
+    p = plot(title="$teamname", xlabel="Number of Pitches", ylabel="MPH")
     plotvelo(target, isbypitchtype)
     return p
 end

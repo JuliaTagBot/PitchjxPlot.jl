@@ -35,21 +35,21 @@ function heatmapplot(data; per="player", firstname=nothing, lastname=nothing, te
     data = pitchjx(start, fin)
     # execute
     if per == "player"
-        return heatmapplot_by_player(data, start, fin, firstname, lastname, isbypitchtype)
+        return heatmapplot_by_player(data, firstname, lastname, isbypitchtype)
     else
-        return heatmapplot_by_team(data, start, fin, teamname, isbypitchtype)
+        return heatmapplot_by_team(data, teamname, isbypitchtype)
     end
 end
 
-function heatmapplot_by_player(data, start, fin, firstname, lastname, isbypitchtype)
+function heatmapplot_by_player(data, firstname, lastname, isbypitchtype)
     target = data[(data.pitcher_firstname .== firstname) .& (data.pitcher_lastname .== lastname), :]
-    title = "$start to $fin: $firstname $lastname"
+    title = "$firstname $lastname"
     return plotheatmap(target, title, isbypitchtype)
 end
 
-function heatmapplot_by_team(data, start, fin, teamname, isbypitchtype)
+function heatmapplot_by_team(data, teamname, isbypitchtype)
     target = data[data.pitcher_teamname .== teamname, :]
-    title = "$start to $fin: $teamname"
+    title = "$teamname"
     return plotheatmap(target, title, isbypitchtype)
 end
 

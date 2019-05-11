@@ -22,9 +22,9 @@ function movementplot(data; per="player", firstname=nothing, lastname=nothing, t
     checkparam(per, firstname, lastname, teamname)
     # execute
     if per == "player"
-        return movementplot_by_player(data, start, fin, firstname, lastname)
+        return movementplot_by_player(data, firstname, lastname)
     else
-        return movementplot_by_team(data, start, fin, teamname)
+        return movementplot_by_team(data, teamname)
     end
 end
 
@@ -34,7 +34,7 @@ function movementplot_by_player(data, start, fin, firstname, lastname)
     target[:pfxx] = parse.(Float64, target[:pfxx])
     target[:pfxz] = parse.(Float64, target[:pfxz])
     p = plot(
-        xlims=(-20,20), ylims=(-20,20), title="$start to $fin: $firstname $lastname",
+        xlims=(-20,20), ylims=(-20,20), title="$firstname $lastname",
         xlabel="Horizon Movement", ylabel="Vertical Movement"
     )
     plotmovement(target)
@@ -47,7 +47,7 @@ function movementplot_by_team(data, start, fin, teamname)
     target[:pfxx] = parse.(Float64, target[:pfxx])
     target[:pfxz] = parse.(Float64, target[:pfxz])
     p = plot(
-        xlims=(-20,20), ylims=(-20,20), title="$start to $fin: $teamname",
+        xlims=(-20,20), ylims=(-20,20), title="$teamname",
         xlabel="Horizon Movement", ylabel="Vertical Movement"
     )
     plotmovement(target)
@@ -88,32 +88,32 @@ function vmove_velo_plot(data; per="player", firstname=nothing, lastname=nothing
     data = pitchjx(start, fin)
     # execute
     if per == "player"
-        return vmove_velo_by_player(data, start, fin, firstname, lastname)
+        return vmove_velo_by_player(data, firstname, lastname)
     else
-        return vmove_velo_by_team(data, start, fin, teamname)
+        return vmove_velo_by_team(data, teamname)
     end
 end
 
-function vmove_velo_by_player(data, start, fin, firstname, lastname)
+function vmove_velo_by_player(data, firstname, lastname)
     target = data[(data.pitcher_firstname .== firstname) .& (data.pitcher_lastname .== lastname), :]
     # convert velocity to Float64
     target[:startspeed] = parse.(Float64, target[:startspeed])
     target[:pfxz] = parse.(Float64, target[:pfxz])
     p = plot(
-        xlims=(60,100), ylims=(-20,20), title="$start to $fin: $firstname $lastname",
+        xlims=(60,100), ylims=(-20,20), title="$firstname $lastname",
         xlabel="Start Speed", ylabel="Vertical Movement"
     )
     plot_vmove_velo(target)
     return p
 end
 
-function vmove_velo_by_team(data, start, fin, teamname)
+function vmove_velo_by_team(data, teamname)
     target = data[data.pitcher_teamname .== teamname, :]
     # convert velocity to Float64
     target[:startspeed] = parse.(Float64, target[:startspeed])
     target[:pfxz] = parse.(Float64, target[:pfxz])
     p = plot(
-        xlims=(60,100), ylims=(-20,20), title="$start to $fin: $teamname",
+        xlims=(60,100), ylims=(-20,20), title="$teamname",
         xlabel="Start Speed", ylabel="Vertical Movement"
     )
     plot_vmove_velo(target)
