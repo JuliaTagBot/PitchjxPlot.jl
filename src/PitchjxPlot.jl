@@ -6,7 +6,6 @@ export
     movementplot,
     vmove_velo_plot
 
-using Pitchjx
 using Plots
 
 include(joinpath(dirname(@__FILE__), "utils.jl"))

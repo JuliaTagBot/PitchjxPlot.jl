@@ -28,7 +28,7 @@ function movementplot(data; per="player", firstname=nothing, lastname=nothing, t
     end
 end
 
-function movementplot_by_player(data, start, fin, firstname, lastname)
+function movementplot_by_player(data, firstname, lastname)
     target = data[(data.pitcher_firstname .== firstname) .& (data.pitcher_lastname .== lastname), :]
     # convert velocity to Float64
     target[:pfxx] = parse.(Float64, target[:pfxx])
@@ -41,7 +41,7 @@ function movementplot_by_player(data, start, fin, firstname, lastname)
     return p
 end
 
-function movementplot_by_team(data, start, fin, teamname)
+function movementplot_by_team(data, teamname)
     target = data[data.pitcher_teamname .== teamname, :]
     # convert velocity to Float64
     target[:pfxx] = parse.(Float64, target[:pfxx])
@@ -84,8 +84,6 @@ Generate velocity-vertical move scatter.
 function vmove_velo_plot(data; per="player", firstname=nothing, lastname=nothing, teamname=nothing)
     # parameter check
     checkparam(per, firstname, lastname, teamname)
-    # extract data
-    data = pitchjx(start, fin)
     # execute
     if per == "player"
         return vmove_velo_by_player(data, firstname, lastname)

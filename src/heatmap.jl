@@ -31,8 +31,6 @@ Generate location heatmap.
 function heatmapplot(data; per="player", firstname=nothing, lastname=nothing, teamname=nothing, isbypitchtype=false)
     # parameter check
     checkparam(per, firstname, lastname, teamname)
-    # extract data
-    data = pitchjx(start, fin)
     # execute
     if per == "player"
         return heatmapplot_by_player(data, firstname, lastname, isbypitchtype)
